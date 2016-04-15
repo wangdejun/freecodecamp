@@ -12,9 +12,13 @@ If prop does not correspond to any valid properties then return "No such propert
 "Harry","likes" should return an array
 "Bob", "number" should return "No such contact"
 "Akira", "address" should return "No such property"
+
+1.编写函数，如果firstName在数组中，则返回所指定的prop;
+2.如果firstName在数组中，但是不包含指定的prop，则返回"No such property";
+3.如果数组的元素没有相匹配的firstName，则返回"No such contact";
 **/
 
-
+//给定的所要求的数组，每个数组包含firstName,lastName,number,likes四个field
 var contacts = [
     {
         "firstName": "Akira",
@@ -41,36 +45,27 @@ var contacts = [
         "likes": ["Javascript", "Gaming", "Foxes"]
     }
 ];
-
-
+//函数，接受两个参数，firstName,prop;
 function lookUpProfile(firstName, prop){
-// Only change code below this line
-  var x="firstName";
-  var y="lastName";
-  var z="number";
-  var w="likes";
-  var p=String(prop);
-  var flag=0;
+    var x="firstName";
+    var p=String(prop);
+    var flag=0;//设立一个flag变量，用来侦测第一步是不是完成了
 
-  for(var i=0;i<contacts.length;i++){
-      if(contacts[i][x]==firstName&&contacts[i].hasOwnProperty(p)){
-          flag=1;
-          return contacts[i][p];
-      }
-  }
-  
-  if(flag===0){
-    for(var j=0;j<contacts.length;j++){
-      if(contacts[j][x]==firstName){
-             return "No such property";
-         }else{
-             return "No such contact";
-         }
-         }
-  }
-  
+    for(var i=0;i<contacts.length;i++){
+        if(contacts[i][x]==firstName&&contacts[i].hasOwnProperty(p)){
+            flag=1;
+            return contacts[i][p];
+        }
+    }
+    if(flag===0){
+        for(var j=0;j<contacts.length;j++){
+            if(contacts[j][x]==firstName){
+                return "No such property";
+            }else
+                 return "No such contact";
+        }
+    }
 // Only change code above this line
 }
-
-// Change these values to test your function
+// test,Change these values to test your function
 lookUpProfile("Akira", "likes");
