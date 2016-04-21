@@ -25,4 +25,22 @@ function truthCheck(collection, pre) {
 //test
 truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
 
+/*
+ *  第二种方法！
+ */
+//发现这个函数的第二种写法，精髓标志位flag，没必要，然并卵
+//直接用return控制出口就可以，代码更简洁
+function truthCheck(collection, pre) {
+  for(var i=0;i<collection.length;i++){
+    if(collection[i].hasOwnProperty(pre)){
+      if(collection[i][pre]){//这一行啥都没做，空的，第一次这么做；
+      }else
+      return false;
+    }else
+    return false;
+  }
+  return true;
+}
 
+//test
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
